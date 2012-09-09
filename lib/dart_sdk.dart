@@ -22,7 +22,7 @@ class DartUtils {
     var bits = null;
 
     var dartSdkPath = getSdkFolder();
-    if(dartSdkPath.isEmpty()) {
+    if(dartSdkPath == null || dartSdkPath.isEmpty()) {
       return bits;
     }
 
