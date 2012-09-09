@@ -1,0 +1,27 @@
+compiler:    
+  includes: ['{DART_SDK}/include']  
+  input_files:
+  - 'sample_extension.cc'
+clean: [ '*.exp', '*.lib', '*.o', '*.obj']    
+linker:
+  input_files:
+  - 'sample_extension'    
+  output_file: 'sample_extension'  
+platforms:
+  linux:
+    compiler:
+      arguments: ['-fPIC', '-Wall']      
+    linker:    
+      arguments: ['-shared']
+      output_file: 'libsample_extension.so'            
+  windows:    
+    compiler:
+      defines: {'DART_SHARED_LIB':}        
+      input_files:      
+      - 'sample_extension_dllmain_win.cc'
+    linker:
+      arguments: ['/DLL']      
+      input_files:
+      - 'dart.lib'      
+      - 'sample_extension_dllmain_win'
+      libpaths: ['{DART_SDK}/bin']      
