@@ -11,6 +11,8 @@ class LinuxConfigurator implements ProjectTool {
     switch(project.configurationMethod) {
       case ProjectConfigurationMethod.DART_SDK:
         return _configureForDartSDK(project);
+      case ProjectConfigurationMethod.OPERATING_SYSTEM:
+        return _configureForOperatingSystem(project);
       default:
         return ProjectConfigurationUtils.getErrorConfigurationMethod(
             project.configurationMethod);
