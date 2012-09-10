@@ -10,14 +10,6 @@ class GnuCompiler implements ProjectTool {
   List<String> _projectToArguments(Project project) {
     var settings = project.compilerSettings;
     var arguments = ['-c'];
-
-    if(project.bits == 32) {
-      arguments.add('-m32');
-    } else if(project.bits != 64) {
-      throw new UnsupportedOperationException(
-          'Project with "${project.bits}"-bits not supported by compiler.');
-    }
-
     arguments.addAll(settings.arguments);
 
     var includes = SystemUtils.expandEnvironmentVars(settings.includes);

@@ -9,6 +9,8 @@ class Project {
 
   List<String> clean = [];
 
+  ProjectConfigurationMethod configurationMethod;
+
   Project() {
     bits = DartUtils.getVmBits();
     compilerSettings = new CompilerSettings();

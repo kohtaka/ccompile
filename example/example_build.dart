@@ -13,21 +13,12 @@ void build() {
   var workingDirectory = getScriptDirectory();
   var separator = Platform.pathSeparator;
   var projectName = '${workingDirectory}${separator}sample_extension.yaml';
-  var clean = true;
   var builder = new ProjectBuilder();
   builder.loadProject(projectName).then((project) {
     print('Building project "$projectName"');
-    builder.build(project, workingDirectory)
-    .chain((result) {
-      if(clean) {
-        return builder.clean(project, workingDirectory).chain((_) {
-          return new Future.immediate(result);
-        });
-      }
-
-      return new Future.immediate(result);
-    })
-    .then((result) {
+    // Configure for running Dart VM.
+    project.configurationMethod = ProjectConfigurationMethod.DART_SDK;
+    builder.configureBuildAndClean(project, workingDirectory).then((result) {
       if(result.exitCode != 0) {
         print('Error building project.');
         print('Exit code: ${result.exitCode}');
@@ -46,7 +37,7 @@ void build() {
 }
 
 String getScriptDirectory() {
-  // Don't use this in your projects.
+  // Don't use this technique in your projects.
   var reflect = currentMirrorSystem();
   var path = reflect.isolate.rootLibrary.url;
   if(Platform.operatingSystem == 'windows') {

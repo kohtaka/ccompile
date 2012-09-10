@@ -3,11 +3,11 @@ class WindowsCleaner implements ProjectTool {
     return FutureUtils.fromSync(() =>
       _buildCleanTasks(project, workingDirectory)).chain((tasks) {
         if(tasks.length == 0) {
-          return new Future.immediate(null);
+          return new Future.immediate(new ProjectToolResult());
         }
 
         return Futures.wait(tasks).chain((_) {
-          return new Future.immediate(null);
+          return new Future.immediate(new ProjectToolResult());
         });
       });
   }

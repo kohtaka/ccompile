@@ -1,7 +1,6 @@
 class MsvcCompiler implements ProjectTool {
   Future<ProcessResult> run(Project project, [String workingDirectory]) {
-    var cpuType = MsvcUtils.getCpuType(project.bits);
-    return MsvcUtils.getEnvironment(cpuType).chain((env) {
+    return MsvcUtils.getEnvironment(project.cpuType).chain((env) {
       var options = new ProcessOptions();
       if(env != null) {
         options.environment = env;

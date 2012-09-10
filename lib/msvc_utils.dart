@@ -88,8 +88,4 @@ class MsvcUtils {
       });
     });
   }
-
-  static getCpuType(int bits) {
-    return {'32': 'x86', '64': 'x64'}['$bits'];
-  }
 }

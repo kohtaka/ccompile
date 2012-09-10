@@ -10,14 +10,6 @@ class GnuLinker implements ProjectTool {
   List<String> _projectToArguments(Project project) {
     var settings = project.linkerSettings;
     var arguments = [];
-
-    if(project.bits == 32) {
-      arguments.add('-m32');
-    } else if(project.bits != 64) {
-      throw new UnsupportedOperationException(
-          'Project with "${project.bits}"-bits not supported by linker.');
-    }
-
     arguments.addAll(settings.arguments);
 
     var libpaths = SystemUtils.expandEnvironmentVars(settings.libpaths);

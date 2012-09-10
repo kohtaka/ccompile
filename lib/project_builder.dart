@@ -6,19 +6,49 @@ class ProjectBuilder {
   }
 
   Future<ProcessResult> build(Project project, [String workingDirectory]) {
-    return getCompiler().run(project, workingDirectory).chain((result) {
+    return compile(project, workingDirectory).chain((result) {
       if(result.exitCode != 0) {
         return new Future.immediate(result);
       }
 
-      return getLinker().run(project, workingDirectory).chain((result) {
+      return link(project, workingDirectory).chain((result) {
         return new Future.immediate(result);
       });
     });
   }
 
+  Future<ProcessResult> compile(Project project, [String workingDirectory]) {
+    return getCompiler().run(project, workingDirectory);
+  }
+
+  Future<ProcessResult> link(Project project, [String workingDirectory]) {
+    return getLinker().run(project, workingDirectory);
+  }
+
   Future<ProcessResult> clean(Project project, [String workingDirectory]) {
     return getCleaner().run(project, workingDirectory);
+  }
+
+  Future<ProcessResult> configure(Project project, [String workingDirectory]) {
+    return getConfigurator().run(project, workingDirectory);
+  }
+
+  Future<ProcessResult> configureAndBuild(Project project, [String workingDirectory]) {
+    return configure(project, workingDirectory).chain((result) {
+      if(result.exitCode != 0) {
+        return new Future.immediate(result);
+      }
+
+      return build(project, workingDirectory);
+    });
+  }
+
+  Future<ProcessResult> configureBuildAndClean(Project project, [String workingDirectory]) {
+    return configureAndBuild(project, workingDirectory).chain((result) {
+      return clean(project, workingDirectory).chain((_) {
+        return new Future.immediate(result);
+      });
+    });
   }
 
   ProjectTool getCleaner() {
@@ -29,6 +59,20 @@ class ProjectBuilder {
         return new UnixCleaner();
       case 'windows':
         return new WindowsCleaner();
+      default:
+        _unsupportedPlatform();
+        break;
+    }
+  }
+
+  ProjectTool getConfigurator() {
+    switch(_platform) {
+      case 'linux':
+        return new LinuxConfigurator();
+      case 'macos':
+        return new MacosConfigurator();
+      case 'windows':
+        return new WindowsConfigurator();
       default:
         _unsupportedPlatform();
         break;
