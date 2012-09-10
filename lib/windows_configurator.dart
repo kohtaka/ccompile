@@ -48,8 +48,7 @@ class WindowsConfigurator implements ProjectTool {
         project.cpuType = 'x64';
         break;
       default:
-        return ProjectConfigurationUtils.getErrorProcessorBits(
-            project.bits);
+        return ProjectConfigurationUtils.getErrorProcessorArchitecture(arch);
     }
 
     return new ProjectToolResult();

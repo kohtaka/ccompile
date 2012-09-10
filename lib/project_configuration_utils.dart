@@ -15,7 +15,7 @@ class ProjectConfigurationUtils {
     if(arch == null) {
       messages.add('No information about processor architecture.');
     } else {
-      messages.add('Unknown $arch central processor.');
+      messages.add('Unknown $arch processor architecture.');
     }
 
     return _createError(messages);
