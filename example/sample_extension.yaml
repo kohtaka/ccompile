@@ -13,7 +13,13 @@ platforms:
       arguments: ['-fPIC', '-Wall']      
     linker:    
       arguments: ['-shared']
-      output_file: 'libsample_extension.so'            
+      output_file: 'libsample_extension.so'
+  macos:
+    compiler:
+      arguments: ['-fPIC', '-Wall']
+    linker:    
+      arguments: ['-dynamiclib', '-undefined', 'dynamic_lookup']
+      output_file: 'libsample_extension.dylib'                
   windows:    
     compiler:
       defines: {'DART_SHARED_LIB':}        
