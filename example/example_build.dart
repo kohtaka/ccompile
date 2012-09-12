@@ -16,9 +16,7 @@ void build() {
   var builder = new ProjectBuilder();
   builder.loadProject(projectName).then((project) {
     print('Building project "$projectName"');
-    // Configure for running Dart VM.
-    project.configurationMethod = ProjectConfigurationMethod.DART_SDK;
-    builder.configureBuildAndClean(project, workingDirectory).then((result) {
+    builder.buildAndClean(project, workingDirectory).then((result) {
       if(result.exitCode != 0) {
         print('Error building project.');
         print('Exit code: ${result.exitCode}');

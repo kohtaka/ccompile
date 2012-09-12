@@ -1,3 +1,4 @@
+bits: 32 # 0 = Dart SDK bits 
 compiler:    
   includes: ['{DART_SDK}/include']  
   input_files:

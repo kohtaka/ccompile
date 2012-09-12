@@ -12,6 +12,10 @@ class GnuCompiler implements ProjectTool {
     var arguments = ['-c'];
     arguments.addAll(settings.arguments);
 
+    if(project.getBits() == 32) {
+      arguments.add('-m32');
+    }
+
     var includes = SystemUtils.expandEnvironmentVars(settings.includes);
     includes = includes.map((elem) => PathUtils.correctPathSeparators(elem));
     includes.forEach((include) {

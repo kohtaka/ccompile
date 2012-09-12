@@ -1,7 +1,7 @@
 class MsvcUtils {
-  static Future<String> getEnvironmentScript(String cpuType) {
-    if(cpuType == null || (cpuType != 'x86' && cpuType != 'x64')) {
-      throw new IllegalArgumentException('cpuType: $cpuType');
+  static Future<String> getEnvironmentScript(int bits) {
+    if(bits == null || (bits != 32 && bits != 64)) {
+      throw new IllegalArgumentException('bits: $bits');
     }
 
     var key = @'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio';
@@ -29,11 +29,11 @@ class MsvcUtils {
 
       var scriptName = '';
 
-      switch(cpuType) {
-        case 'x86':
+      switch(bits) {
+        case 32:
           scriptName = 'vcvars32.bat';
           break;
-        case 'x64':
+        case 64:
           scriptName = 'vcvarsx86_amd64.bat';
           break;
       }
@@ -61,12 +61,12 @@ class MsvcUtils {
     });
   }
 
-  static Future<Map<String, String>> getEnvironment(String cpuType) {
-    if(cpuType == null || (cpuType != 'x86' && cpuType != 'x64')) {
-      throw new IllegalArgumentException('cpuType: $cpuType');
+  static Future<Map<String, String>> getEnvironment(int bits) {
+    if(bits == null || (bits != 32 && bits != 64)) {
+      throw new IllegalArgumentException('bits: $bits');
     }
 
-    return getEnvironmentScript(cpuType).chain((script) {
+    return getEnvironmentScript(bits).chain((script) {
       if(script == null) {
         return new Future.immediate(null);
       }

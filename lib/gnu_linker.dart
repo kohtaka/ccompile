@@ -12,6 +12,10 @@ class GnuLinker implements ProjectTool {
     var arguments = [];
     arguments.addAll(settings.arguments);
 
+    if(project.getBits() == 32) {
+      arguments.add('-m32');
+    }
+
     var libpaths = SystemUtils.expandEnvironmentVars(settings.libpaths);
     libpaths = libpaths.map((elem) => PathUtils.correctPathSeparators(elem));
     libpaths.forEach((libpath) {

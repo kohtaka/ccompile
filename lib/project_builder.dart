@@ -29,22 +29,8 @@ class ProjectBuilder {
     return getCleaner().run(project, workingDirectory);
   }
 
-  Future<ProcessResult> configure(Project project, [String workingDirectory]) {
-    return getConfigurator().run(project, workingDirectory);
-  }
-
-  Future<ProcessResult> configureAndBuild(Project project, [String workingDirectory]) {
-    return configure(project, workingDirectory).chain((result) {
-      if(result.exitCode != 0) {
-        return new Future.immediate(result);
-      }
-
-      return build(project, workingDirectory);
-    });
-  }
-
-  Future<ProcessResult> configureBuildAndClean(Project project, [String workingDirectory]) {
-    return configureAndBuild(project, workingDirectory).chain((result) {
+  Future<ProcessResult> buildAndClean(Project project, [String workingDirectory]) {
+    return build(project, workingDirectory).chain((result) {
       return clean(project, workingDirectory).chain((_) {
         return new Future.immediate(result);
       });
@@ -59,20 +45,6 @@ class ProjectBuilder {
         return new UnixCleaner();
       case 'windows':
         return new WindowsCleaner();
-      default:
-        _unsupportedPlatform();
-        break;
-    }
-  }
-
-  ProjectTool getConfigurator() {
-    switch(_platform) {
-      case 'linux':
-        return new LinuxConfigurator();
-      case 'macos':
-        return new MacosConfigurator();
-      case 'windows':
-        return new WindowsConfigurator();
       default:
         _unsupportedPlatform();
         break;
@@ -124,6 +96,9 @@ class ProjectBuilder {
   void _parseProject(Project project, Map sections, bool skipTargets) {
     sections.forEach((name, section) {
       switch(name) {
+        case 'bits':
+          _parseBits(project, section);
+          break;
         case 'compiler':
           _checkIsMap(section, 'compiler');
           _parseCompilerSettings(project, section);
@@ -149,6 +124,14 @@ class ProjectBuilder {
           break;
       }
     });
+  }
+
+  void _parseBits(Project project, value) {
+    if( value == null || value is int) {
+      project.bits = value;
+    } else {
+      throw('Project section "bits" must be an int value or null.');
+    }
   }
 
   void _parseCompilerSettings(Project project, Map sections) {
