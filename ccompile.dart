@@ -7,6 +7,7 @@
 
 #import('lib/yaml/yaml.dart');
 
+#source('lib/src/cleaner.dart');
 #source('lib/src/compiler_settings.dart');
 #source('lib/src/dart_utils.dart');
 #source('lib/src/file_utils.dart');

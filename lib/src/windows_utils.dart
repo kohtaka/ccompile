@@ -8,6 +8,7 @@ class WindowsUtils {
     for(var key in env.getKeys()) {
       if(key.toUpperCase() == 'PATH') {
         paths = env[key].split(';');
+        break;
       }
     }
 
