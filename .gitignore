@@ -170,3 +170,6 @@ pip-log.txt
 *.obj
 *.so
 packages/
+bin/packages/
+example/packages/
+test/packages/
