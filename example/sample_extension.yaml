@@ -7,7 +7,6 @@ clean: [ '*.exp', '*.lib', '*.o', '*.obj']
 linker:
   input_files:
   - 'sample_extension'    
-  output_file: 'sample_extension'  
 platforms:
   linux:
     compiler:
@@ -31,4 +30,5 @@ platforms:
       input_files:
       - 'dart.lib'      
       - 'sample_extension_dllmain_win'
-      libpaths: ['{DART_SDK}/bin']      
+      libpaths: ['{DART_SDK}/bin']
+      output_file: 'sample_extension'      

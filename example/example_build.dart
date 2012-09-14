@@ -1,18 +1,15 @@
 #library('example_build');
 
-#import('dart:io');
-#import('dart:math');
-#import('dart:mirrors');
 #import('../ccompile.dart');
+#import('example_utils.dart');
 
 void main() {
   build();
 }
 
 void build() {
-  var workingDirectory = getScriptDirectory();
-  var separator = Platform.pathSeparator;
-  var projectName = '${workingDirectory}${separator}sample_extension.yaml';
+  var workingDirectory = ExampleUtils.getScriptDirectory();
+  var projectName = '${workingDirectory}/sample_extension.yaml';
   var builder = new ProjectBuilder();
   builder.loadProject(projectName).then((project) {
     print('Building project "$projectName"');
@@ -29,26 +26,8 @@ void build() {
         }
       } else {
         print('Project is built successfully.');
+        print('To check the work done, run "example_use_sample_extension.dart".');
       }
     });
   });
-}
-
-String getScriptDirectory() {
-  // Don't use this technique in your projects.
-  var reflect = currentMirrorSystem();
-  var path = reflect.isolate.rootLibrary.url;
-  if(Platform.operatingSystem == 'windows') {
-    path = path.replaceAll('file:///', '');
-  } else {
-    path = path.replaceAll('file://', '');
-  }
-  var unix = path.lastIndexOf('/');
-  var windows = path.lastIndexOf('\\');
-  var index = max(unix, windows);
-  if(index != -1) {
-    return path.substring(0, index);
-  }
-
-  return '';
 }
