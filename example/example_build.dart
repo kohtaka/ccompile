@@ -1,6 +1,6 @@
 #library('example_build');
 
-#import('../ccompile.dart');
+#import('../lib/ccompile.dart');
 #import('example_utils.dart');
 
 void main() {
