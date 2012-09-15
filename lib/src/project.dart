@@ -143,6 +143,10 @@ class Project {
             settings.defines[k] = v;
           });
           break;
+        case 'executable':
+          _checkIsString(section, 'executable');
+          settings.executable = section;
+          break;
         case 'includes':
           _checkIsListOfStrings(section, 'includes');
           settings.includes.addAll(section);

@@ -1,7 +1,7 @@
 class GnuCompiler implements ProjectTool {
   Future<ProcessResult> run(Project project, [String workingDirectory]) {
     var options = new ProcessOptions();
-    var executable = 'g++';
+    var executable = project.compilerSettings.getExecutable('g++');
     var arguments = _projectToArguments(project);
     options.workingDirectory = workingDirectory;
     return Process.run(executable, arguments, options);
