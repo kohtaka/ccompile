@@ -23,4 +23,9 @@ class ExampleUtils {
 
     return '';
   }
+
+  static findLibrary(String name) {
+    var reflect = currentMirrorSystem();
+    reflect.libraries.containsKey(name);
+  }
 }

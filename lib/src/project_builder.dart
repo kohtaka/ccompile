@@ -38,17 +38,7 @@ class ProjectBuilder {
   }
 
   ProjectTool getCleaner() {
-    switch(_platform) {
-      case 'linux':
-        return new UnixCleaner();
-      case 'macos':
-        return new UnixCleaner();
-      case 'windows':
-        return new WindowsCleaner();
-      default:
-        _unsupportedPlatform();
-        break;
-    }
+    return new Cleaner();
   }
 
   ProjectTool getCompiler() {

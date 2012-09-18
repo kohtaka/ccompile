@@ -7,6 +7,8 @@
 
 #import('yaml/yaml.dart');
 
+#import('../packages/file_finder/file_finder.dart');
+
 #source('src/cleaner.dart');
 #source('src/compiler_settings.dart');
 #source('src/dart_utils.dart');
@@ -23,8 +25,5 @@
 #source('src/project_tool.dart');
 #source('src/project_tool_result.dart');
 #source('src/system_utils.dart');
-#source('src/unix_cleaner.dart');
-#source('src/unix_utils.dart');
-#source('src/windows_cleaner.dart');
 #source('src/windows_registry.dart');
 #source('src/windows_utils.dart');

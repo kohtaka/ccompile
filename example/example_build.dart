@@ -8,6 +8,7 @@ void main() {
 }
 
 void build() {
+  ExampleUtils.findLibrary("example_build");
   var workingDirectory = ExampleUtils.getScriptDirectory();
   var projectName = '${workingDirectory}/sample_extension.yaml';
   var builder = new ProjectBuilder();
