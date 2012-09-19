@@ -12,6 +12,7 @@ void build() {
   var workingDirectory = ExampleUtils.getScriptDirectory();
   var projectName = '${workingDirectory}/sample_extension.yaml';
   var builder = new ProjectBuilder();
+  var errors = [];
   builder.loadProject(projectName).then((project) {
     print('Building project "$projectName"');
     builder.buildAndClean(project, workingDirectory).then((result) {

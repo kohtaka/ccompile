@@ -1,4 +1,4 @@
-bits: 0 # 0 = Dart SDK bits 
+bits: 0 # 0 means the bits of Dart SDK 
 compiler:    
   includes: ['{DART_SDK}/include']  
   input_files:
@@ -31,4 +31,4 @@ platforms:
       - 'dart.lib'      
       - 'sample_extension_dllmain_win'
       libpaths: ['{DART_SDK}/bin']
-      output_file: 'sample_extension'      
+      output_file: 'sample_extension.dll'      

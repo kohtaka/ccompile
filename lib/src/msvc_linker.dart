@@ -33,7 +33,7 @@ class MsvcLinker implements ProjectTool {
     });
 
     if(!settings.outputFile.isEmpty()) {
-      arguments.add('/OUT"${settings.outputFile}/"');
+      arguments.add('/OUT:"${settings.outputFile}"');
     }
 
     return arguments;

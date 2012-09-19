@@ -70,11 +70,11 @@ class ProjectBuilder {
   }
 
   Future<Project> loadProject(String filepath, [String format]) {
-    return Project.load(filepath, format);
+    return ProjectHelper.load(filepath, format);
   }
 
   Project loadProjectSync(String filepath, [String format]) {
-    return Project.loadSync(filepath, format);
+    return ProjectHelper.loadSync(filepath, format);
   }
 
   bool isSupportedPlatform(String platform) {
