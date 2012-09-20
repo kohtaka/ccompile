@@ -5,10 +5,9 @@
 #import('dart:io');
 #import('dart:math');
 
+#import('file_finder/file_finder.dart');
+#import('mezoni_parser/mezoni_parser.dart');
 #import('yaml/yaml.dart');
-
-#import('../packages/file_finder/file_finder.dart');
-#import('../packages/mezoni_parser/mezoni_parser.dart');
 
 #source('src/cleaner.dart');
 #source('src/compiler_settings.dart');
