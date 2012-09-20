@@ -1,1 +1,1 @@
-{"packages":{"file_finder":{"version":"0.1.0","source":"git","description":{"url":"git://github.com/mezoni/file_finder.git","ref":null,"resolved-ref":"3ea16fd802c04ec7453986af0ddfe225d4278f5f"}}}}
+{"packages":{"file_finder":{"version":"0.1.1","source":"git","description":{"url":"git://github.com/mezoni/file_finder.git","ref":null,"resolved-ref":"8b2d8763a779c88c7c2073e8a776b7a5e07398d5"}},"mezoni_parser":{"version":"0.1.0","source":"git","description":{"url":"git://github.com/mezoni/mezoni_parser.git","ref":null,"resolved-ref":"a8894b4364de556fe683967f6b4d58aaf9c6a78e"}}}}

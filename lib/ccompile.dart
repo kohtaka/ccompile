@@ -8,6 +8,7 @@
 #import('yaml/yaml.dart');
 
 #import('../packages/file_finder/file_finder.dart');
+#import('../packages/mezoni_parser/mezoni_parser.dart');
 
 #source('src/cleaner.dart');
 #source('src/compiler_settings.dart');
@@ -22,8 +23,10 @@
 #source('src/msvc_utils.dart');
 #source('src/project.dart');
 #source('src/project_builder.dart');
+#source('src/project_parser.dart');
 #source('src/project_tool.dart');
 #source('src/project_tool_result.dart');
+#source('src/project_utils.dart');
 #source('src/system_utils.dart');
 #source('src/windows_registry.dart');
 #source('src/windows_utils.dart');
