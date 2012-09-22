@@ -125,19 +125,6 @@ class CcompileTool {
     return;
   }
 
-  Future _build1() {
-    return FutureUtils.fromValue(null).chain((_) {
-      if(_break) {
-        return new Future.immediate(null);
-      }
-
-      var builder = new ProjectBuilder();
-      return builder.loadProject(projectFullPath, format).chain((project) {
-
-      });
-    });
-  }
-
   Future _build() {
     return FutureUtils.fromValue(null).chain((_) {
       if(_break) {
