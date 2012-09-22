@@ -3,9 +3,9 @@ class FileFinder {
       [bool searchForFiles = true, bool searchForDirs = false,
       bool recursive = false, bool ignoreCase]) {
     var dirs = {};
-    var basePath = new Path(path);
+    var basePath = new Path.fromNative(path);
     filemasks.forEach((filemask) {
-      var filePath = new Path(filemask);
+      var filePath = new Path.fromNative(filemask);
       // Skip filemask with absoulute path.
       if(filePath.isAbsolute) {
         return;

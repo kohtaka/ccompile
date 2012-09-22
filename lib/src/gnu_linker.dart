@@ -30,7 +30,7 @@ class GnuLinker implements ProjectTool {
     var inputFiles = SystemUtils.expandEnvironmentVars(settings.inputFiles);
     inputFiles = inputFiles.map((elem) => FileUtils.correctPathSeparators(elem));
     inputFiles.forEach((inputFile) {
-      var ext = new Path(inputFile).extension;
+      var ext = new Path.fromNative(inputFile).extension;
       if(ext.isEmpty()) {
         inputFile = '$inputFile.o';
       }

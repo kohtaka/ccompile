@@ -1,4 +1,4 @@
-#library('ExampleUtils');
+#library('example_utils');
 
 #import('dart:mirrors');
 #import('dart:io');
@@ -22,10 +22,5 @@ class ExampleUtils {
     }
 
     return '';
-  }
-
-  static findLibrary(String name) {
-    var reflect = currentMirrorSystem();
-    reflect.libraries.containsKey(name);
   }
 }

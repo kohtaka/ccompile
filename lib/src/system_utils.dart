@@ -20,4 +20,14 @@ class SystemUtils {
 
     return string;
   }
+
+  static String newline = Platform.operatingSystem == 'windows' ? '\r\n' : '\n';
+
+  static void writeStdout(String string) {
+    stdout.writeString('$string$newline');
+  }
+
+  static void writeStderr(String string) {
+    stderr.writeString('$string$newline');
+  }
 }

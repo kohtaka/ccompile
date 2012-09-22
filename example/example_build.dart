@@ -1,5 +1,6 @@
 #library('example_build');
 
+#import('dart:io');
 #import('../lib/ccompile.dart');
 #import('example_utils.dart');
 
@@ -14,21 +15,22 @@ void build() {
   var builder = new ProjectBuilder();
   var errors = [];
   builder.loadProject(projectName).then((project) {
-    print('Building project "$projectName"');
+    SystemUtils.writeStdout('Building project "$projectName"');
     builder.buildAndClean(project, workingDirectory).then((result) {
       if(result.exitCode != 0) {
-        print('Error building project.');
-        print('Exit code: ${result.exitCode}');
+        SystemUtils.writeStdout('Error building project.');
+        SystemUtils.writeStdout('Exit code: ${result.exitCode}');
         if(!result.stdout.isEmpty()) {
-          print('${result.stdout}');
+          SystemUtils.writeStdout(result.stdout);
         }
 
         if(!result.stderr.isEmpty()) {
-          print('${result.stderr}');
+          SystemUtils.writeStderr(result.stderr);
         }
       } else {
-        print('Project is built successfully.');
-        print('To check the work done, run "example_use_sample_extension.dart".');
+        SystemUtils.writeStdout('Project is built successfully.');
+        SystemUtils.writeStdout(
+            'To check the work done, run "example_use_sample_extension.dart".');
       }
     });
   });

@@ -29,7 +29,7 @@ class ProjectHelper {
     }
 
     if(format == null) {
-      var ext = new Path(filepath).extension;
+      var ext = new Path.fromNative(filepath).extension;
       switch(ext.toLowerCase()) {
         case 'json':
           format = 'json';

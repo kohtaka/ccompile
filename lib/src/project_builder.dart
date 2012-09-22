@@ -37,6 +37,31 @@ class ProjectBuilder {
     });
   }
 
+  Future<ProcessResult> customBuild(Project project, [String workingDirectory,
+      bool compile = true, link = true, clean = true]) {
+    return FutureUtils.fromValue(null).chain((_) {
+      if(!compile) {
+        return new Future.immediate(new ProjectToolResult());
+      }
+
+      return this.compile(project, workingDirectory);
+    }).chain((ProcessResult result) {
+      if(result.exitCode != 0 || !link) {
+        return new Future.immediate(result);
+      }
+
+      return this.link(project, workingDirectory);
+    }).chain((ProcessResult result) {
+      if(!clean) {
+        return new Future.immediate(result);
+      }
+
+      return this.clean(project, workingDirectory).chain((_) {
+        return new Future.immediate(result);
+      });
+    });
+  }
+
   ProjectTool getCleaner() {
     return new Cleaner();
   }

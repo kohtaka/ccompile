@@ -4,4 +4,8 @@ class FutureUtils {
     new Timer(0, (timer) => completer.complete(sync()));
     return completer.future;
   }
+
+  static Future fromValue(value) {
+    return fromSync(() => value);
+  }
 }
