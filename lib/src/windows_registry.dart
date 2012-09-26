@@ -74,7 +74,7 @@ class WindowsRegistry {
         }
 
         var value = new WindowsRegistryValue();
-        var exp = const RegExp(@'^\s+(\S+)\s+(\S+)\s+(\S.*)');
+        var exp = const RegExp(r'^\s+(\S+)\s+(\S+)\s+(\S.*)');
         var matches = exp.allMatches(string);
         if(matches.iterator().hasNext()) {
           var match = matches.iterator().next();
@@ -114,7 +114,7 @@ class WindowsRegistryKey {
 
   String get name => _name;
 
-  String get parentName() {
+  String get parentName {
     if(fullName == name) {
       return '';
     }

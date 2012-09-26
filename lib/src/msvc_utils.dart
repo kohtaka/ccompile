@@ -4,14 +4,14 @@ class MsvcUtils {
       throw new IllegalArgumentException('bits: $bits');
     }
 
-    var key = @'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio';
+    var key = r'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio';
 
     return WindowsRegistry.queryAllKeys(key).chain((reg) {
       if(reg == null) {
         return new Future.immediate(null);
       }
 
-      var regVC7 = reg[@'SxS\VC7'];
+      var regVC7 = reg[r'SxS\VC7'];
       if(regVC7 == null) {
         return new Future.immediate(null);
       }
@@ -75,7 +75,7 @@ class MsvcUtils {
       return Process.run(executable, []).chain((result) {
         if(result != null && result.exitCode == 0) {
           var env = new Map<String, String>();
-          var exp = const RegExp(@'(^\S+)=(.*)$', multiLine: true);
+          var exp = const RegExp(r'(^\S+)=(.*)$', multiLine: true);
           var matches = exp.allMatches(result.stdout);
           for(var match in matches) {
             env[match.group(1)] = match.group(2);

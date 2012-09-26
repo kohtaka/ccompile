@@ -10,7 +10,7 @@ class SystemUtils {
   }
 
   static String _expandMacro(String string, String callback(String)) {
-    RegExp exp = const RegExp(@'({\S+?})');
+    RegExp exp = const RegExp(r'({\S+?})');
     var matches = exp.allMatches(string);
     for(var match in matches) {
       var seq = match.group(0);
