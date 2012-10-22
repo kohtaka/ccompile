@@ -2,7 +2,7 @@
 
 #import('dart:io');
 #import('packages/args/args.dart');
-#import('../lib/ccompile.dart');
+#import('package:ccompile/ccompile.dart');
 
 main() {
   new CcompileTool().run().then((result) {
