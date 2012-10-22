@@ -12,7 +12,7 @@ class FilteredDirectoryLister implements DirectoryLister {
 
   FilteredDirectoryLister(Directory dir, List<String> filemasks,
       [bool recursive = false, bool ignoreCase]) {
-    _lister = dir.list(recursive);
+    _lister = dir.list(recursive: recursive);
     _lister.onDir = _filterDir;
     _lister.onFile = _filterFile;
 
