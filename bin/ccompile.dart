@@ -1,7 +1,7 @@
 #library('ccompile_tool');
 
 #import('dart:io');
-#import('packages/args/args.dart');
+#import('package:args/args.dart');
 #import('package:ccompile/ccompile.dart');
 
 main() {
