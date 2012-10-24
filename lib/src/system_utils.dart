@@ -3,7 +3,10 @@ class SystemUtils {
     var list = [];
     var len = strings.length;
     for(var string in strings) {
-      list.add(_expandMacro(string, (s) => Platform.environment[s]));
+      list.add(_expandMacro(string, (s) {
+        var result = Platform.environment[s];
+        return result == null ? '' : result;
+      }));
     }
 
     return list;
