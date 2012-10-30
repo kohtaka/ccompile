@@ -1,3 +1,5 @@
+part of ccompile;
+
 class ProjectParser {
   MezoniParser _parser;
 
@@ -80,7 +82,7 @@ class ProjectParser {
     return format;
   }
 
-  int bits(String key, Dynamic value, Project parent) {
+  int bits(String key, dynamic value, Project parent) {
     if(value != null) {
       try {
         parent.bits = int.parse(value);
@@ -92,7 +94,7 @@ class ProjectParser {
     return parent.bits;
   }
 
-  List clean(String key, Dynamic value, Project parent) {
+  List clean(String key, dynamic value, Project parent) {
     if(parent.clean == null) {
       parent.clean = [];
     }
@@ -100,57 +102,57 @@ class ProjectParser {
     return parent.clean;
   }
 
-  CompilerSettings compiler(String key, Dynamic value, Project parent) {
+  CompilerSettings compiler(String key, dynamic value, Project parent) {
     return parent.compilerSettings;
   }
 
-  List compiler_arguments(String key, Dynamic value, CompilerSettings parent) {
+  List compiler_arguments(String key, dynamic value, CompilerSettings parent) {
     return parent.arguments;
   }
 
-  List compiler_includes(String key, Dynamic value, CompilerSettings parent) {
+  List compiler_includes(String key, dynamic value, CompilerSettings parent) {
     return parent.includes;
   }
 
-  List compiler_input_files(String key, Dynamic value, CompilerSettings parent) {
+  List compiler_input_files(String key, dynamic value, CompilerSettings parent) {
     return parent.inputFiles;
   }
 
-  Map compiler_defines(String key, Dynamic value, CompilerSettings parent) {
+  Map compiler_defines(String key, dynamic value, CompilerSettings parent) {
     return parent.defines;
   }
 
-  Dynamic compiler_executable(String key, Dynamic value, CompilerSettings parent) {
+  dynamic compiler_executable(String key, dynamic value, CompilerSettings parent) {
     parent.executable = value;
     return value;
   }
 
-  LinkerSettings linker(String key, Dynamic value, Project parent) {
+  LinkerSettings linker(String key, dynamic value, Project parent) {
     return parent.linkerSettings;
   }
 
-  List linker_input_files(String key, Dynamic value, LinkerSettings parent) {
+  List linker_input_files(String key, dynamic value, LinkerSettings parent) {
     return parent.inputFiles;
   }
 
-  List linker_arguments(String key, Dynamic value, LinkerSettings parent) {
+  List linker_arguments(String key, dynamic value, LinkerSettings parent) {
     return parent.arguments;
   }
 
-  Dynamic linker_output_file(String key, Dynamic value, LinkerSettings parent) {
+  dynamic linker_output_file(String key, dynamic value, LinkerSettings parent) {
     parent.outputFile = value;
     return value;
   }
 
-  List linker_libpaths(String key, Dynamic value, LinkerSettings parent) {
+  List linker_libpaths(String key, dynamic value, LinkerSettings parent) {
     return parent.libpaths;
   }
 
-  Project platforms(String key, Dynamic value, Project parent) {
+  Project platforms(String key, dynamic value, Project parent) {
     return parent;
   }
 
-  Project platform(String key, Dynamic value, Project parent) {
+  Project platform(String key, dynamic value, Project parent) {
     if(key != Platform.operatingSystem) {
       return new Project();
     }
@@ -158,12 +160,12 @@ class ProjectParser {
     return parent;
   }
 
-  Dynamic list_item(String key, Dynamic value, List parent) {
+  dynamic list_item(String key, dynamic value, List parent) {
     parent.add(value);
     return value;
   }
 
-  Dynamic map_item(String key, Dynamic value, Map parent) {
+  dynamic map_item(String key, dynamic value, Map parent) {
     parent[key] = value;
     return value;
   }

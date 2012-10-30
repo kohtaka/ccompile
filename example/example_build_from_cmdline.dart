@@ -1,5 +1,5 @@
-#import('dart:io');
-#import('dart:mirrors');
+import 'dart:io';
+import 'dart:mirrors';
 
 main() {
   var project = '../example/sample_extension.yaml';
@@ -14,11 +14,11 @@ void runAsDartScript(String project) {
   var env = 'CCOMPILE';
   var ccompile = 'ccompile.dart';
   var path = Utils.findFileInPathEnv(ccompile);
-  if(path.isEmpty()) {
+  if(path.isEmpty) {
     path = Utils.findFileInEnv(env, ccompile);
   }
 
-  if(path.isEmpty()) {
+  if(path.isEmpty) {
     Utils.writeString('Can not find $ccompile either in env["PATH"] nor env["${env}"]', stderr);
     return;
   }

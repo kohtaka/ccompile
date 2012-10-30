@@ -1,3 +1,5 @@
+part of ccompile;
+
 class MsvcLinker implements ProjectTool {
   Future<ProcessResult> run(Project project, [String workingDirectory]) {
     return MsvcUtils.getEnvironment(
@@ -32,7 +34,7 @@ class MsvcLinker implements ProjectTool {
       arguments.add('/LIBPATH:"$libpath"');
     });
 
-    if(!settings.outputFile.isEmpty()) {
+    if(!settings.outputFile.isEmpty) {
       arguments.add('/OUT:"${settings.outputFile}"');
     }
 

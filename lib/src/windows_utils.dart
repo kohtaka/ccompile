@@ -1,11 +1,13 @@
+part of ccompile;
+
 class WindowsUtils {
   static String findFileInEnvPath(Map<String, String> env, String filename) {
     if(env == null || filename == null) {
       return filename;
     }
 
-    var paths = {};
-    for(var key in env.getKeys()) {
+    var paths = [];
+    for(var key in env.keys) {
       if(key.toUpperCase() == 'PATH') {
         paths = env[key].split(';');
         break;
@@ -14,7 +16,7 @@ class WindowsUtils {
 
     for(var i = paths.length; i >= 0; i--) {
       var path = paths[i - 1];
-      if(path.isEmpty()) {
+      if(path.isEmpty) {
         continue;
       }
 

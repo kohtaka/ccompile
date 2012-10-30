@@ -1,8 +1,8 @@
-#library('ccompile_tool');
+library ccompile_tool;
 
-#import('dart:io');
-#import('package:args/args.dart');
-#import('package:ccompile/ccompile.dart');
+import 'dart:io';
+import 'package:args/args.dart';
+import 'package:ccompile/ccompile.dart';
 
 main() {
   new CcompileTool().run().then((result) {

@@ -1,3 +1,5 @@
+part of ccompile;
+
 class FutureUtils {
   static Future fromSync(Function sync) {
     var completer = new Completer();

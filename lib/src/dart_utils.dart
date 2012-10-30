@@ -1,3 +1,5 @@
+part of ccompile;
+
 class DartUtils {
   static String getSdkFolder() {
     var path = Platform.environment['DART_SDK'];
@@ -22,7 +24,7 @@ class DartUtils {
     var bits = null;
 
     var dartSdkPath = getSdkFolder();
-    if(dartSdkPath == null || dartSdkPath.isEmpty()) {
+    if(dartSdkPath == null || dartSdkPath.isEmpty) {
       return bits;
     }
 
@@ -156,7 +158,7 @@ class DartUtils {
     return binaryType;
   }
 
-  static int _listToShort(List<int> buffer, [bool reverse = true]) {
+  static int _listToShort(List<int> buffer, {bool reverse: true}) {
     if(reverse) {
       return buffer[0] + buffer[1] * 0x100;
     } else {
@@ -164,7 +166,7 @@ class DartUtils {
     }
   }
 
-  static int _listToLong(List<int> buffer, [bool reverse = true]) {
+  static int _listToLong(List<int> buffer, {bool reverse: true}) {
     if(reverse) {
       return buffer[0] + buffer[1] * 0x100 + buffer[2] * 0x10000 +
           buffer[3] * 0x1000000;

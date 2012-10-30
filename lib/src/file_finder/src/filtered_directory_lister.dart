@@ -1,3 +1,5 @@
+part of file_finder;
+
 class FilteredDirectoryLister implements DirectoryLister {
   static List _metachars =
       const ['[', ']', '\\', '^', r'$', '|', '+', '(', ')'];
@@ -99,7 +101,7 @@ class FilteredDirectoryLister implements DirectoryLister {
         var part = parts[i];
         var expr = exprs[i]['reg_exp'];
         var matches = expr.allMatches(part);
-        if(!matches.iterator().hasNext()) {
+        if(!matches.iterator().hasNext) {
           found = false;
           break;
         } else {

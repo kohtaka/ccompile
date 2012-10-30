@@ -1,6 +1,6 @@
-#library('mezoni_parser');
+library mezoni_parser;
 
-typedef Dynamic ParserCallback(String key, Dynamic value, Dynamic prevValue);
+typedef dynamic ParserCallback(String key, dynamic value, dynamic prevValue);
 
 /* Fast structure parser */
 class MezoniParser {
@@ -12,14 +12,14 @@ class MezoniParser {
 
   MezoniParser(this.format);
 
-  void parse(Dynamic data, Dynamic initialValue) {
+  void parse(dynamic data, dynamic initialValue) {
     errors = [];
     if(data is List) {
       for(var val in data) {
         _plunge('', '', '-', val, initialValue);
       }
     } else if(data is Map) {
-      for(var key in data.getKeys()) {
+      for(var key in data.keys) {
         var value = data[key];
         _plunge('', '', key, data[key], initialValue);
       }
@@ -32,13 +32,13 @@ class MezoniParser {
   String glbPathWithMult;
 
   void _plunge(String prevFullPath, String prevAccPath, String curKey,
-      Dynamic value, Dynamic prevValue) {
+      dynamic value, dynamic prevValue) {
     var curPathWithName = '';
     var curPathWithMult = '';
     var acceptedPath = '';
-    var curFullPath = prevFullPath.isEmpty() ? curKey : '$prevFullPath.$curKey';
+    var curFullPath = prevFullPath.isEmpty ? curKey : '$prevFullPath.$curKey';
 
-    var sep = prevAccPath.isEmpty() ? '' : ':';
+    var sep = prevAccPath.isEmpty ? '' : ':';
 
     if(value is List) {
       curPathWithName = '$prevAccPath$sep[$curKey]';
@@ -66,7 +66,7 @@ class MezoniParser {
     glbFullPath = curFullPath;
 
     var curValue;
-    if(!acceptedPath.isEmpty()) {
+    if(!acceptedPath.isEmpty) {
       if(!notCallback) {
         if(callback != null) {
           if(value is List || value is Map || value == null) {
@@ -82,7 +82,7 @@ class MezoniParser {
           _plunge(curFullPath, acceptedPath, '*', val, curValue);
         }
       } else if(value is Map) {
-        for(var key in value.getKeys()) {
+        for(var key in value.keys) {
           _plunge(curFullPath, acceptedPath, key, value[key], curValue);
         }
       }

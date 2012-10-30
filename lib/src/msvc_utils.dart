@@ -1,3 +1,5 @@
+part of ccompile;
+
 class MsvcUtils {
   static Future<String> getEnvironmentScript(int bits) {
     if(bits == null || (bits != 32 && bits != 64)) {
@@ -17,7 +19,7 @@ class MsvcUtils {
       }
 
       var versions = [];
-      for(var version in reg.keys.getKeys()) {
+      for(var version in reg.keys.keys) {
         if(regVC7.values.containsKey(version)) {
           versions.add(regVC7.values[version].value);
         }
@@ -38,7 +40,7 @@ class MsvcUtils {
           break;
       }
 
-      if(scriptName.isEmpty()) {
+      if(scriptName.isEmpty) {
         return new Future.immediate(null);
       }
 
@@ -53,7 +55,7 @@ class MsvcUtils {
         }
       }
 
-      if(fullScriptPath.isEmpty()) {
+      if(fullScriptPath.isEmpty) {
         return new Future.immediate(null);
       }
 

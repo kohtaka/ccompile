@@ -1,3 +1,5 @@
+part of ccompile;
+
 class ProjectToolResult implements ProcessResult {
   int _exitCode = 0;
 

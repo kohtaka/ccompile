@@ -1,3 +1,5 @@
+part of ccompile;
+
 class LinkerSettings {
   List<String> arguments = [];
 

@@ -1,8 +1,8 @@
-#library('example_utils');
+library example_utils;
 
-#import('dart:mirrors');
-#import('dart:io');
-#import('dart:math');
+import 'dart:mirrors';
+import 'dart:io';
+import 'dart:math';
 
 class ExampleUtils {
   static String getRootScriptDirectory() {

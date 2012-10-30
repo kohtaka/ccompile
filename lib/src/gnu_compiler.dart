@@ -1,3 +1,5 @@
+part of ccompile;
+
 class GnuCompiler implements ProjectTool {
   Future<ProcessResult> run(Project project, [String workingDirectory]) {
     var options = new ProcessOptions();

@@ -1,3 +1,5 @@
+part of ccompile;
+
 class ProjectHelper {
   static Future<Project> create(Map map) {
     FutureUtils.fromSync(() => createSync(map));
@@ -20,7 +22,7 @@ class ProjectHelper {
   }
 
   static Project loadSync(String filepath, [String format]) {
-    if(filepath == null || filepath.isEmpty()) {
+    if(filepath == null || filepath.isEmpty) {
       throw new IllegalArgumentException('filename: $filepath');
     }
 

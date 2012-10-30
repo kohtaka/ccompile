@@ -1,3 +1,5 @@
+part of ccompile;
+
 class FileUtils {
   static String correctPathSeparators(String path) {
     var to = Platform.pathSeparator;

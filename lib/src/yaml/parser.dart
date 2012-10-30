@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+part of yaml;
+
 /**
  * Translates a string of characters into a YAML serialization tree.
  *
@@ -202,10 +204,10 @@ class _Parser {
     if (farthestLine < line) {
       farthestLine = line;
       farthestColumn = column;
-      farthestContext = contextStack.last();
+      farthestContext = contextStack.last;
     } else if (farthestLine == line && farthestColumn < column) {
       farthestColumn = column;
-      farthestContext = contextStack.last();
+      farthestContext = contextStack.last;
     }
     farthestPos = pos;
 
@@ -688,7 +690,7 @@ class _Parser {
     if (!captureAs('', () => consumeChar(char))) return false;
     var captured = captureAndTransform(
         () => nAtOnce(digits, (c, _) => isHexDigit(c)),
-        (hex) => new String.fromCharCodes([Math.parseInt("0x$hex")]));
+        (hex) => new String.fromCharCodes([int.parse("0x$hex")]));
     return expect(captured, "$digits hexidecimal digits");
   }
 

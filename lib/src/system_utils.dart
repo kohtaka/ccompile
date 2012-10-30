@@ -1,3 +1,5 @@
+part of ccompile;
+
 class SystemUtils {
   static List<String> expandEnvironmentVars(List<String> strings) {
     var list = [];

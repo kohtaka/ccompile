@@ -1,3 +1,5 @@
+part of ccompile;
+
 class GnuLinker implements ProjectTool {
   Future<ProcessResult> run(Project project, [String workingDirectory]) {
     var options = new ProcessOptions();
@@ -22,7 +24,7 @@ class GnuLinker implements ProjectTool {
       arguments.add('-L$libpath');
     });
 
-    if(!settings.outputFile.isEmpty()) {
+    if(!settings.outputFile.isEmpty) {
       arguments.add('-o');
       arguments.add('${settings.outputFile}');
     }
@@ -31,7 +33,7 @@ class GnuLinker implements ProjectTool {
     inputFiles = inputFiles.map((elem) => FileUtils.correctPathSeparators(elem));
     inputFiles.forEach((inputFile) {
       var ext = new Path.fromNative(inputFile).extension;
-      if(ext.isEmpty()) {
+      if(ext.isEmpty) {
         inputFile = '$inputFile.o';
       }
       arguments.add('$inputFile');

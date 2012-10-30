@@ -1,7 +1,9 @@
+part of file_finder;
+
 class FileFinder {
   static Future<List<String>> find(String path, List<String> filemasks,
-      [bool searchForFiles = true, bool searchForDirs = false,
-      bool recursive = false, bool ignoreCase]) {
+      {bool searchForFiles: true, bool searchForDirs: false,
+      bool recursive: false, bool ignoreCase}) {
     var dirs = {};
     var basePath = new Path.fromNative(path);
     filemasks.forEach((filemask) {
@@ -12,7 +14,7 @@ class FileFinder {
       }
 
       var mask = filePath.filename;
-      if(mask.trim().isEmpty()) {
+      if(mask.trim().isEmpty) {
         return;
       }
 
@@ -30,7 +32,7 @@ class FileFinder {
 
     var results = [];
     var futures = [];
-    dirs.getKeys().forEach((dirName) {
+    dirs.keys.forEach((dirName) {
       var dir = new Directory(dirName);
       var lister = new FilteredDirectoryLister(dir, dirs[dirName],
           recursive, ignoreCase);

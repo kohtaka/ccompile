@@ -1,3 +1,5 @@
+part of ccompile;
+
 class CompilerSettings {
   List<String> arguments = [];
 

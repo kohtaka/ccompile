@@ -1,3 +1,5 @@
+part of ccompile;
+
 class Cleaner implements ProjectTool {
   Future<ProcessResult> run(Project project, [String workingDirectory]) {
     return _clean(project, workingDirectory);

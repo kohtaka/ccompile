@@ -1,3 +1,5 @@
+part of ccompile;
+
 class MsvcCompiler implements ProjectTool {
   Future<ProcessResult> run(Project project, [String workingDirectory]) {
     return MsvcUtils.getEnvironment(

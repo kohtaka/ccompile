@@ -1,6 +1,6 @@
-#library("example_use_sample_extension");
+library example_use_sample_extension;
 
-#import("sample_extension.dart");
+import "sample_extension.dart";
 
 void main() {
   var ext = new SampleExtension();

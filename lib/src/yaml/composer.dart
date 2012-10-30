@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+part of yaml;
+
 /**
  * Takes a parsed YAML document (what the spec calls the "serialization tree")
  * and resolves aliases, resolves tags, and parses scalars to produce the
@@ -59,7 +61,7 @@ class _Composer extends _Visitor {
       'float': parseFloat, 'str': parseString
     };
 
-    for (var key in tagParsers.getKeys()) {
+    for (var key in tagParsers.keys) {
       if (scalar.tag.name != _Tag.yaml(key)) continue;
       var result = tagParsers[key](scalar.content);
       if (result != null) return setAnchor(scalar, result);
@@ -123,14 +125,14 @@ class _Composer extends _Visitor {
     var match = const RegExp("^[-+]?[0-9]+\$").firstMatch(content);
     if (match != null) {
       return new _ScalarNode(_Tag.yaml("int"),
-          value: Math.parseInt(match.group(0)));
+          value: int.parse(match.group(0)));
     }
 
     match = const RegExp("^0o([0-7]+)\$").firstMatch(content);
     if (match != null) {
       // TODO(nweiz): clean this up when Dart can parse an octal string
       var n = 0;
-      for (var c in match.group(1).charCodes()) {
+      for (var c in match.group(1).charCodes) {
         n *= 8;
         n += c - 48;
       }
@@ -140,7 +142,7 @@ class _Composer extends _Visitor {
     match = const RegExp("^0x[0-9a-fA-F]+\$").firstMatch(content);
     if (match != null) {
       return new _ScalarNode(_Tag.yaml("int"),
-          value: Math.parseInt(match.group(0)));
+          value: int.parse(match.group(0)));
     }
 
     return null;
@@ -156,20 +158,20 @@ class _Composer extends _Visitor {
       // floats by removing the trailing dot.
       var matchStr = match.group(0).replaceAll(new RegExp(r"\.$"), "");
       return new _ScalarNode(_Tag.yaml("float"),
-          value: Math.parseDouble(matchStr));
+          value: double.parse(matchStr));
     }
 
     match = const RegExp("^([+-]?)\.(inf|Inf|INF)\$").firstMatch(content);
     if (match != null) {
       var infinityStr = match.group(1) == "-" ? "-Infinity" : "Infinity";
       return new _ScalarNode(_Tag.yaml("float"),
-          value: Math.parseDouble(infinityStr));
+          value: double.parse(infinityStr));
     }
 
     match = const RegExp("^\.(nan|NaN|NAN)\$").firstMatch(content);
     if (match != null) {
       return new _ScalarNode(_Tag.yaml("float"),
-          value: Math.parseDouble("NaN"));
+          value: double.parse("NaN"));
     }
 
     return null;

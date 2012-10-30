@@ -1,3 +1,5 @@
+part of ccompile;
+
 class ProjectBuilder {
   String _platform;
 

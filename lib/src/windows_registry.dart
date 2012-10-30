@@ -1,3 +1,5 @@
+part of ccompile;
+
 class WindowsRegistry {
   static Future<String> query(String keyName, List<String> arguments) {
     return Process.run('reg query "$keyName"', arguments).chain((result) {
@@ -40,7 +42,7 @@ class WindowsRegistry {
       }
 
       var fullName = strings[index++];
-      if(fullName.isEmpty()) {
+      if(fullName.isEmpty) {
         break;
       }
 
@@ -69,14 +71,14 @@ class WindowsRegistry {
         }
 
         var string = strings[index++];
-        if(string.isEmpty()) {
+        if(string.isEmpty) {
           break;
         }
 
         var value = new WindowsRegistryValue();
         var exp = const RegExp(r'^\s+(\S+)\s+(\S+)\s+(\S.*)');
         var matches = exp.allMatches(string);
-        if(matches.iterator().hasNext()) {
+        if(matches.iterator().hasNext) {
           var match = matches.iterator().next();
           var name = match[1];
           value.type = match[2];
@@ -100,7 +102,7 @@ class WindowsRegistryKey {
   Map<String, WindowsRegistryValue> values = {};
 
   WindowsRegistryKey(this.fullName) {
-    if(fullName == null || fullName.isEmpty() || fullName.endsWith('\\')) {
+    if(fullName == null || fullName.isEmpty || fullName.endsWith('\\')) {
       throw new IllegalArgumentException('fullName: $fullName');
     }
 
@@ -127,7 +129,7 @@ class WindowsRegistryKey {
       throw new IllegalArgumentException('relativePath: $relativePath');
     }
 
-    if(relativePath.isEmpty()) {
+    if(relativePath.isEmpty) {
       return this;
     }
 
