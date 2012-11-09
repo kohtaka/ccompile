@@ -21,7 +21,7 @@ Dart_Handle HandleError(Dart_Handle handle) {
 
 void GetHello(Dart_NativeArguments arguments) {
   Dart_EnterScope();
-  Dart_Handle result = HandleError(Dart_NewString("Hello from native C++ extension!"));
+  Dart_Handle result = HandleError(Dart_NewStringFromCString("Hello from native C++ extension!"));
   Dart_SetReturnValue(arguments, result);
   Dart_ExitScope();
 }
@@ -36,7 +36,7 @@ FunctionLookup function_list[] = {
     {NULL, NULL}};
 
 Dart_NativeFunction ResolveName(Dart_Handle name, int argc) {
-  if (!Dart_IsString8(name)) return NULL;
+  if (!Dart_IsString(name)) return NULL;
   Dart_NativeFunction result = NULL;
   Dart_EnterScope();
   const char* cname;

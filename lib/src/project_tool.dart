@@ -1,5 +1,5 @@
 part of ccompile;
 
-interface ProjectTool {
+abstract class ProjectTool {
   Future<ProcessResult> run(Project project, [String workingDirectory]);
 }

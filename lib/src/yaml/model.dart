@@ -68,7 +68,7 @@ class _Node {
 
   int get hashCode => _hashCode([tag, anchor]);
 
-  abstract visit(_Visitor v);
+  visit(_Visitor v);
 }
 
 /** A sequence node represents an ordered list of nodes. */
