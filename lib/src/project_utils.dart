@@ -45,7 +45,7 @@ class ProjectHelper {
       }
     }
 
-    var text = FileUtils.readAsTextSync(filepath);
+    var text = FileUtils.readAsStringSync(filepath);
 
     var map;
     if(format == 'json') {

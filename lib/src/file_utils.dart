@@ -21,12 +21,12 @@ class FileUtils {
     return fp.readListSync(buffer, 0, buffer.length);
   }
 
-  static String readAsTextSync(String filename) {
+  static String readAsStringSync(String filename) {
     var file = new File(filename);
     if(!file.existsSync()) {
       throw('File "$filename" not found.');
     }
 
-    return file.readAsTextSync();
+    return file.readAsStringSync();
   }
 }
