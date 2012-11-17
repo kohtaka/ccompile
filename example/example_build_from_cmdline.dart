@@ -80,7 +80,7 @@ class Utils {
   }
 
   static String _expandMacro(String string, String callback(String)) {
-    RegExp exp = const RegExp(r'(%\S+?%)');
+    RegExp exp = new RegExp(r'(%\S+?%)');
     var matches = exp.allMatches(string);
     for(var match in matches) {
       var seq = match.group(0);

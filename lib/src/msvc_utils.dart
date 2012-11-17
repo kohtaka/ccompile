@@ -77,7 +77,7 @@ class MsvcUtils {
       return Process.run(executable, []).chain((result) {
         if(result != null && result.exitCode == 0) {
           var env = new Map<String, String>();
-          var exp = const RegExp(r'(^\S+)=(.*)$', multiLine: true);
+          var exp = new RegExp(r'(^\S+)=(.*)$', multiLine: true);
           var matches = exp.allMatches(result.stdout);
           for(var match in matches) {
             env[match.group(1)] = match.group(2);

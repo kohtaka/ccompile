@@ -76,7 +76,7 @@ class WindowsRegistry {
         }
 
         var value = new WindowsRegistryValue();
-        var exp = const RegExp(r'^\s+(\S+)\s+(\S+)\s+(\S.*)');
+        var exp = new RegExp(r'^\s+(\S+)\s+(\S+)\s+(\S.*)');
         var matches = exp.allMatches(string);
         if(matches.iterator().hasNext) {
           var match = matches.iterator().next();
